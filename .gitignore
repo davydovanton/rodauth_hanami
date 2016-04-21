@@ -1,0 +1,4 @@
+/db/rodauth_hanami_development
+/db/rodauth_hanami_test
+/public/assets*
+/tmp
