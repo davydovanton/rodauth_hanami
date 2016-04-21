@@ -16,7 +16,7 @@ Hanami::Model.configure do
   #    adapter type: :sql, uri: 'postgres://localhost/rodauth_hanami_development'
   #    adapter type: :sql, uri: 'mysql://localhost/rodauth_hanami_development'
   #
-  adapter type: :file_system, uri: ENV['RODAUTH_HANAMI_DATABASE_URL']
+  adapter type: :sql, uri: ENV['RODAUTH_HANAMI_DATABASE_URL']
 
   ##
   # Database mapping
