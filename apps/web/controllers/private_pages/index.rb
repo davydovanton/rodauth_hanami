@@ -3,7 +3,9 @@ module Web::Controllers::PrivatePages
     include Web::Action
 
     def call(params)
-      rodauth.require_authentication
+      unless rodauth.authenticated?
+        redirect_to rodauth.login_route
+      end
     end
 
     def rodauth

@@ -23,6 +23,7 @@ class AuthApp < Roda
   plugin :middleware
 
   plugin :rodauth do
+    enable :login, :logout
     # Since we are using SQLite as the database and not PostgreSQL, just store the
     # password hash in a column in the main table
     account_password_hash_column :password_hash
