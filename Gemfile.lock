@@ -2,6 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     addressable (2.4.0)
+    bcrypt (3.1.10)
     capybara (2.7.0)
       addressable
       mime-types (>= 1.16)
@@ -10,6 +11,7 @@ GEM
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
     dotenv (2.1.1)
+    erubis (2.7.0)
     hanami (0.7.2)
       bundler (~> 1.6)
       dotenv (~> 2.0)
@@ -64,7 +66,14 @@ GEM
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
+    rack_csrf (2.5.0)
+      rack (>= 1.1.0)
     rake (11.1.2)
+    roda (2.13.0)
+      rack
+    rodauth (1.0.0)
+      roda (>= 2.6.0)
+      sequel (>= 4)
     sequel (4.33.0)
     shotgun (0.9.1)
       rack (>= 1.0)
@@ -79,13 +88,17 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt
   bundler
   capybara
+  erubis
   hanami (= 0.7.2)
   hanami-model (~> 0.5)
   minitest
   pg
+  rack_csrf
   rake
+  rodauth
 
 BUNDLED WITH
    1.11.2
