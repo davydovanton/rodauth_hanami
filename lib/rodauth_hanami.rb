@@ -30,13 +30,14 @@ Hanami::Model.configure do
   # Alternatively, you can use a block syntax like the following:
   #
   mapping do
-    # collection :users do
-    #   entity     User
-    #   repository UserRepository
-    #
-    #   attribute :id,   Integer
-    #   attribute :name, String
-    # end
+    collection :accounts do
+      entity     Account
+      repository AccountRepository
+
+      attribute :id,   Integer
+      attribute :email, String
+      attribute :password_hash, String
+    end
   end
 end.load!
 

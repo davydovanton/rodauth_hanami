@@ -3,6 +3,11 @@ module Web::Controllers::PrivatePages
     include Web::Action
 
     def call(params)
+      rodauth.require_authentication
+    end
+
+    def rodauth
+      request.env['rodauth']
     end
   end
 end
