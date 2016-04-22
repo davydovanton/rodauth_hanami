@@ -1,8 +1,8 @@
 require './config/environment'
-require './lib/rodauth_app'
+require './apps/auth/auth_app'
 
 use Rack::Session::Cookie, secret: ENV['WEB_SESSIONS_SECRET']
 use Rack::Csrf
-use RodauthApp
+use AuthApp
 
 run Hanami::Container.new
