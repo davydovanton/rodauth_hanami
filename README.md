@@ -2,8 +2,8 @@
 This repository is example how you can integrate [rodauth](http://rodauth.jeremyevans.net) to [hanami](http://hanamirb.org) app
 
 ### TODO
-1. Create Authentication module like [this](http://hanamirb.org/guides/actions/share-code/) (in auth app)
-2. Try to use `controller.prepare` configuration block
+1. ~~Create Authentication module like [this](http://hanamirb.org/guides/actions/share-code/) (in auth app)~~
+2. ~~Try to use `controller.prepare` configuration block~~
 3. Create admin application
 4. Protect full admin application
 5. Redirect to login form and after to previous url
