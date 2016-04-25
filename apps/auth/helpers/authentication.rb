@@ -13,7 +13,9 @@ module Auth
   private
 
     def authenticate!
+      p session
       unless authenticated?
+        session[:previous_path] = request.path
         redirect_to rodauth.login_route
       end
     end
