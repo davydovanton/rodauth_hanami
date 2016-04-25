@@ -1,51 +1,13 @@
 <h1>Public Page</h1>
 
 <% if rodauth.logged_in? %>
-  <h1>You are logged in as <%= DB[:accounts].where(:id=>rodauth.session_value).get(:email) %></h1>
-  <% if rodauth.logged_in_via_remember_key? %>
-    <p>You were automatically logged in via a remember token.</p>
-  <% end %>
-  <% unless rodauth.verified_account? %>
-    <p>This account has not yet been verified.</p>
-  <% end %>
-  <% if rodauth.two_factor_authenticated? %>
-    <p>You have logged in using two factor authentication.</p>
-  <% elsif rodauth.uses_two_factor_authentication? %>
-    <p>You have authenticated via password, but not logged in using two factor authentication.</p>
-  <% end %>
+  <h1>You are logged in as <%= current_email %></h1>
 
   <ul>
     <li><a href="/change-login">Change Login</a></li>
     <li><a href="/change-password">Change Password</a></li>
     <li><a href="/close-account">Close Account</a></li>
-    <li><a href="/remember">Change Remember Settings</a></li>
-    <% if rodauth.logged_in_via_remember_key? %>
-      <li><a href="/confirm-password">Confirm Password</a></li>
-    <% end %>
-    <% if rodauth.uses_two_factor_authentication? %>
-      <% if rodauth.two_factor_authenticated? %>
-        <li><a href="/otp-disable">Disable Two-Factor Authentication</a></li>
-        <li><a href="/recovery-codes">View Two Factor Authentication Recovery Codes</a></li>
-        <% if rodauth.sms_setup? %>
-          <li><a href="/sms-disable">Disable Backup SMS Authentication</a></li>
-        <% else %>
-          <li><a href="/sms-setup">Setup Backup SMS Authentication</a></li>
-        <% end %>
-      <% else %>
-        <li><a href="/otp-auth">Login via Two-Factor Authentication</a></li>
-      <% end %>
-    <% else %>
-      <li><a href="/otp-setup">Setup Two-Factor Authentication</a></li>
-    <% end %>
   </ul>
-
-  <form action="/single-session" method="POST">
-    <%== csrf_tag %>
-    <input type="submit" class="btn btn-primary" name="<%= session['single_session_check'] ? 'd' : 'e' %>" value="<%= session['single_session_check'] ? 'Disable' : 'Enable' %> Single Session" />
-  </form>
-
-  <p>Last Login: <%= rodauth.last_account_login_at %>.</p>
-  <p>Last Activity: <%= rodauth.last_account_activity_at %>.</p>
 
 <% else %>
   <h1>Overview</h1>
