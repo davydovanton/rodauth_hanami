@@ -20,10 +20,15 @@ class AuthApp < Roda
   end
 
   # Alias render to erb, since the layout calls the erb method to render
-  alias erb render
+  alias render_alias render
 
   route do |r|
     r.rodauth
     env['rodauth'] = rodauth
+  end
+
+  # Put Hanami::View.render here
+  def render_alias(path)
+    erb(path)
   end
 end
