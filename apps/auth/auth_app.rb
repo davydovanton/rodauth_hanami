@@ -7,7 +7,7 @@ require 'tilt/erubis'
 class AuthApp < Roda
   DB = Sequel.connect(ENV['RODAUTH_HANAMI_DATABASE_URL'])
 
-  plugin :render, escape:true, check_paths: true, views: 'apps/auth/templates'
+  plugin :render, escape: true, check_paths: true, views: 'apps/auth/templates'
   plugin :hooks
   plugin :middleware
 
@@ -29,6 +29,6 @@ class AuthApp < Roda
 
   # Put Hanami::View.render here
   def render_alias(path)
-    erb(path)
+    'test' || erb(path)
   end
 end
