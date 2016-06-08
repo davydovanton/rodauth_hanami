@@ -19,16 +19,22 @@ class AuthApp < Roda
     login_redirect{ session[:previous_path] || '/' }
   end
 
-  # Alias render to erb, since the layout calls the erb method to render
-  alias render_alias render
-
   route do |r|
-    r.rodauth
     env['rodauth'] = rodauth
+    r.rodauth
+  end
+end
+
+module Rodauth
+  module Login
+    def login_view
+      'login template'
+    end
   end
 
-  # Put Hanami::View.render here
-  def render_alias(path)
-    'test' || erb(path)
+  module Logout
+    def logout_view
+      'logout template'
+    end
   end
 end
