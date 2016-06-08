@@ -7,5 +7,5 @@ This repository is example how you can integrate [rodauth](http://rodauth.jeremy
 3. ~~Create admin application~~
 4. ~~Protect full admin application~~
 5. Redirect to login form and after to previous url (use sessions for this)
-6. Integrate view and templates instead templates
+6. Integrate view and templates instead templates (use `login_view` and `logout_view` methods)
 7. Create full migration from rodauth repository
