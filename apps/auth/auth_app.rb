@@ -3,11 +3,13 @@ require 'sequel/core'
 require 'bcrypt'
 require 'erubis'
 require 'tilt/erubis'
+require_relative 'views/login/index'
+require_relative 'views/logout/index'
 
 class AuthApp < Roda
   DB = Sequel.connect(ENV['RODAUTH_HANAMI_DATABASE_URL'])
 
-  plugin :render, escape: true, check_paths: true, views: 'apps/auth/templates'
+  plugin :render, escape: true, check_paths: true
   plugin :hooks
   plugin :middleware
 
@@ -28,13 +30,27 @@ end
 module Rodauth
   module Login
     def login_view
-      'login template'
+      ::Auth::Views::Login::Index.new(template_object('login'), {}).render
+    end
+
+  private
+
+    def template_object(action)
+      path = ::Hanami::View.configuration.root.join("apps/auth/templates/#{action}/index.html.erb")
+      ::Hanami::View::Template.new(path)
     end
   end
 
   module Logout
     def logout_view
-      'logout template'
+      ::Auth::Views::Logout::Index.new(template_object('logout'), {}).render
+    end
+
+  private
+
+    def template_object(action)
+      path = ::Hanami::View.configuration.root.join("apps/auth/templates/#{action}/index.html.erb")
+      ::Hanami::View::Template.new(path)
     end
   end
 end
