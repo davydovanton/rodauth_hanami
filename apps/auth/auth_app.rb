@@ -23,6 +23,7 @@ class AuthApp < Roda
 
   route do |r|
     env['rodauth'] = rodauth
+    $rodauth = rodauth
     r.rodauth
   end
 end
@@ -30,7 +31,7 @@ end
 module Rodauth
   module Login
     def login_view
-      ::Auth::Views::Login::Index.new(template_object('login'), {}).render
+      ::Auth::Views::Login::Index.new(template_object('login'), rodauth: $rodauth).render
     end
 
   private
@@ -43,7 +44,7 @@ module Rodauth
 
   module Logout
     def logout_view
-      ::Auth::Views::Logout::Index.new(template_object('logout'), {}).render
+      ::Auth::Views::Logout::Index.new(template_object('logout'), rodauth: $rodauth).render
     end
 
   private
