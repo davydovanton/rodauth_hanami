@@ -9,7 +9,7 @@ require_relative 'views/logout/index'
 class AuthApp < Roda
   DB = Sequel.connect(ENV['RODAUTH_HANAMI_DATABASE_URL'])
 
-  plugin :render, escape: true, check_paths: true
+  plugin :render, escape: true, check_paths: true, views: 'apps/auth/templates'
   plugin :hooks
   plugin :middleware
 
@@ -23,7 +23,6 @@ class AuthApp < Roda
 
   route do |r|
     env['rodauth'] = rodauth
-    $rodauth = rodauth
     r.rodauth
   end
 end
@@ -31,7 +30,7 @@ end
 module Rodauth
   module Login
     def login_view
-      ::Auth::Views::Login::Index.new(template_object('login'), rodauth: $rodauth).render
+      ::Auth::Views::Login::Index.new(template_object('login'), rodauth: self).render
     end
 
   private
@@ -44,7 +43,7 @@ module Rodauth
 
   module Logout
     def logout_view
-      ::Auth::Views::Logout::Index.new(template_object('logout'), rodauth: $rodauth).render
+      ::Auth::Views::Logout::Index.new(template_object('logout'), rodauth: self).render
     end
 
   private
