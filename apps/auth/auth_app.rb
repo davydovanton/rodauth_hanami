@@ -28,29 +28,22 @@ class AuthApp < Roda
 end
 
 module Rodauth
-  module Login
-    def login_view
-      ::Auth::Views::Login::Index.new(template_object('login'), rodauth: self).render
-    end
-
-  private
-
-    def template_object(action)
+  class TemplateObject
+    def self.call(action)
       path = ::Hanami::View.configuration.root.join("apps/auth/templates/#{action}/index.html.erb")
       ::Hanami::View::Template.new(path)
     end
   end
 
+  module Login
+    def login_view
+      ::Auth::Views::Login::Index.new(TemplateObject.call('login'), rodauth: self).render
+    end
+  end
+
   module Logout
     def logout_view
-      ::Auth::Views::Logout::Index.new(template_object('logout'), rodauth: self).render
-    end
-
-  private
-
-    def template_object(action)
-      path = ::Hanami::View.configuration.root.join("apps/auth/templates/#{action}/index.html.erb")
-      ::Hanami::View::Template.new(path)
+      ::Auth::Views::Logout::Index.new(TemplateObject.call('logout'), rodauth: self).render
     end
   end
 end
