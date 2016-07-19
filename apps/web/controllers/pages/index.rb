@@ -6,6 +6,8 @@ module Web::Controllers::Pages
 
     def call(params)
       @rodauth = rodauth
+
+      # => [200, {"ENV"}, 'body']
     end
 
   private

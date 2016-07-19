@@ -41,13 +41,13 @@ Hanami::Model.configure do
   end
 end.load!
 
-Hanami::Mailer.configure do
-  root "#{ __dir__ }/rodauth_hanami/mailers"
-
-  # See http://hanamirb.org/guides/mailers/delivery
-  delivery do
-    development :test
-    test        :test
-    # production :stmp, address: ENV['SMTP_PORT'], port: 1025
-  end
-end.load!
+# Hanami::Mailer.configure do
+#   root "#{ __dir__ }/rodauth_hanami/mailers"
+#
+#   # See http://hanamirb.org/guides/mailers/delivery
+#   delivery do
+#     development :test
+#     test        :test
+#     # production :stmp, address: ENV['SMTP_PORT'], port: 1025
+#   end
+# end.load!
