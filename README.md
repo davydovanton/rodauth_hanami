@@ -8,4 +8,4 @@ This repository is example how you can integrate [rodauth](http://rodauth.jeremy
 4. ~~Protect full admin application~~
 5. ~~Integrate view and templates instead templates (use `login_view` and `logout_view` methods)~~
 6. ~~Integrate hanami view for templates~~
-7. Redirect to login form and after to previous url (use sessions for this)
+7. ~~Redirect to login form and after to previous url (use sessions for this)~~
