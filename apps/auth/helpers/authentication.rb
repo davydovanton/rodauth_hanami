@@ -30,7 +30,7 @@ module Auth
 
     def account
       if rodauth.nil?
-        @account ||= AccountRepository.find(rodauth.account_id)
+        @account ||= AccountRepository.new.find(rodauth.account_id)
       end
     end
 

@@ -3,7 +3,7 @@ module Web::Views::Pages
     include Web::View
 
     def current_email
-      AccountRepository.find(rodauth.session_value).email
+      AccountRepository.new.find(rodauth.session_value).email
     end
   end
 end

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require_relative '../../../spec_helper'
 require_relative '../../../../apps/web/views/private_pages/index'
 
 describe Web::Views::PrivatePages::Index do
@@ -8,6 +8,6 @@ describe Web::Views::PrivatePages::Index do
   let(:rendered)  { view.render }
 
   it 'exposes #foo' do
-    view.foo.must_equal exposures.fetch(:foo)
+    expect(view.foo).to eq exposures.fetch(:foo)
   end
 end

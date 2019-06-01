@@ -1,12 +1,12 @@
-require 'spec_helper'
+require_relative '../../../spec_helper'
 require_relative '../../../../apps/admin/controllers/dashboard/index'
 
 describe Admin::Controllers::Dashboard::Index do
   let(:action) { Admin::Controllers::Dashboard::Index.new }
   let(:params) { Hash[] }
 
-  it 'is successful' do
+  it 'redirects unauthorized user' do
     response = action.call(params)
-    response[0].must_equal 200
+    expect(response[0]).to eq 302
   end
 end

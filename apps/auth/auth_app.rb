@@ -7,9 +7,9 @@ require_relative 'views/login/index'
 require_relative 'views/logout/index'
 
 class AuthApp < Roda
-  DB = Sequel.connect(ENV['RODAUTH_HANAMI_DATABASE_URL'])
+  DB = Sequel.connect(ENV['DATABASE_URL'])
 
-  plugin :render, escape: true, check_paths: true, views: 'apps/auth/templates'
+  plugin :render, escape: :erubi, check_paths: true, views: 'apps/auth/templates'
   plugin :hooks
   plugin :middleware
 

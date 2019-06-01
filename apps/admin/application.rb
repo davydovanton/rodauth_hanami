@@ -1,5 +1,6 @@
 require 'hanami/helpers'
 require 'hanami/assets'
+require_relative '../auth/helpers/authentication'
 
 module Admin
   class Application < Hanami::Application
