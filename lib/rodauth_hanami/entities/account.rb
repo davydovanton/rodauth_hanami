@@ -1,4 +1,3 @@
-class Account
-  include Hanami::Entity
-  attributes :email, :password_hash
+class Account < Hanami::Entity
+  # attributes :email, :password_hash
 end

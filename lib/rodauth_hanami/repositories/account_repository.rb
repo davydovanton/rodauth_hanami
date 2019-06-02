@@ -1,3 +1,2 @@
-class AccountRepository
-  include Hanami::Repository
+class AccountRepository < Hanami::Repository
 end
